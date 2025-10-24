@@ -1,0 +1,19 @@
+<mat-card class="auth-card">
+  <mat-card-title>Вход</mat-card-title>
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" type="email" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Парола</mat-label>
+      <input matInput formControlName="password" type="password" />
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" [disabled]="form.invalid">Влез</button>
+  </form>
+
+  <p>Нямаш акаунт? <a routerLink="/register">Регистрация</a></p>
+  <mat-error *ngIf="error">{{ error }}</mat-error>
+</mat-card>
