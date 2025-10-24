@@ -1,0 +1,24 @@
+<mat-card class="auth-card">
+  <mat-card-title>Регистрация</mat-card-title>
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" type="email" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Име</mat-label>
+      <input matInput formControlName="fullName" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Парола</mat-label>
+      <input matInput formControlName="password" type="password" />
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" [disabled]="form.invalid">Регистрация</button>
+  </form>
+
+  <p *ngIf="msg" style="color:green">{{ msg }}</p>
+  <mat-error *ngIf="error">{{ error }}</mat-error>
+</mat-card>
