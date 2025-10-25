@@ -8,7 +8,7 @@ import java.util.UUID;
 @Entity
 @Table(name = "merchant_aliases")
 @Getter @Setter @NoArgsConstructor @AllArgsConstructor @Builder
-public class MerchantAlias {
+public class MerchantAlias extends AuditEntity {
     @Id @GeneratedValue
     private UUID id;
 
@@ -24,9 +24,6 @@ public class MerchantAlias {
 
     @Column(nullable = false)
     private String pattern;
-
-    @Column(nullable = false)
-    private Instant createdAt = Instant.now();
 
     public enum MatchType { EXACT, CONTAINS, REGEX, IBAN, MCC }
 }

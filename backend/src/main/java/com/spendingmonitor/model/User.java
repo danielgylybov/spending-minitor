@@ -2,6 +2,8 @@ package com.spendingmonitor.model;
 
 import jakarta.persistence.*;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
+
 import java.time.Instant;
 import java.util.UUID;
 
@@ -11,8 +13,8 @@ import java.util.UUID;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
-public class User {
+@SuperBuilder
+public class User extends AuditEntity {
     @Id @GeneratedValue
     private UUID id;
 
@@ -26,7 +28,4 @@ public class User {
 
     @Builder.Default
     private boolean enabled = true;
-
-    @Column(nullable = false)
-    private Instant createdAt = Instant.now();
 }

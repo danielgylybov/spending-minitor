@@ -1,4 +1,4 @@
-package com.spendingmonitor.backend;
+package com.spendingmonitor;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

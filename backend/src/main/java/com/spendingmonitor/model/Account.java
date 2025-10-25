@@ -8,7 +8,7 @@ import java.util.UUID;
 @Entity
 @Table(name = "accounts")
 @Getter @Setter @NoArgsConstructor @AllArgsConstructor @Builder
-public class Account {
+public class Account extends AuditEntity {
     @Id @GeneratedValue
     private UUID id;
 
@@ -20,7 +20,4 @@ public class Account {
 
     @Column(length = 3, nullable = false)
     private String currency;
-
-    @Column(nullable = false)
-    private Instant createdAt = Instant.now();
 }

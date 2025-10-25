@@ -9,7 +9,7 @@ import java.util.UUID;
 @Table(name = "household_members")
 @Getter @Setter @NoArgsConstructor @AllArgsConstructor @Builder
 @IdClass(HouseholdMemberId.class)
-public class HouseholdMember {
+public class HouseholdMember extends AuditEntity {
 
     @Id
     @Column(name = "user_id")
@@ -22,9 +22,6 @@ public class HouseholdMember {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private Role role;
-
-    @Column(nullable = false)
-    private Instant createdAt = Instant.now();
 
     public enum Role { OWNER, MEMBER }
 }

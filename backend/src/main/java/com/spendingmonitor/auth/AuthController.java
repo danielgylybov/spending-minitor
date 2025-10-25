@@ -4,6 +4,7 @@ import com.spendingmonitor.auth.dto.*;
 import com.spendingmonitor.model.User;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
@@ -24,7 +25,7 @@ public class AuthController {
         try {
             auth.register(req);
             log.info("User registered successfully: {}", req.email());
-            return ResponseEntity.ok().build();
+            return ResponseEntity.status(HttpStatus.CREATED).build();
         } catch (Exception e) {
             log.error("Error during registration for {}: {}", req.email(), e.getMessage(), e);
             return ResponseEntity.internalServerError().build();

@@ -1,3 +1,4 @@
+# ---------- DEFAULT (локално стартиране) ----------
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/spending_monitor
@@ -15,6 +16,28 @@ spring:
 server:
   port: 8080
 
+# Логове към конзолата + Security DEBUG (за да видиш кой chain/entry point се ползва)
+logging:
+  level:
+    root: INFO
+    org.springframework.security: DEBUG
+  pattern:
+    console: "%d{HH:mm:ss.SSS} %-5level %logger{36} - %msg%n"
+
+# Пусни полезни actuator ендпойнти за диагностика
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,env,beans,loggers
+
+# JWT настройки и в default профила (не само в docker)
+jwt:
+  issuer: spending-monitor
+  secret: change-this-super-long-random-secret-at-least-64chars____________________________________
+  ttl-minutes: 120
+
+# ---------- DOCKER ПРОФИЛ ----------
 ---
 spring:
   config:
@@ -24,7 +47,3 @@ spring:
     url: jdbc:postgresql://db:5432/spending_monitor
     username: sm
     password: sm
-jwt:
-  issuer: spending-monitor
-  secret: change-this-super-long-random-secret-at-least-64chars____________________________________
-  ttl-minutes: 120

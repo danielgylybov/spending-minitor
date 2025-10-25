@@ -8,7 +8,7 @@ import java.util.UUID;
 @Entity
 @Table(name = "categories")
 @Getter @Setter @NoArgsConstructor @AllArgsConstructor @Builder
-public class Category {
+public class Category extends AuditEntity {
     @Id @GeneratedValue
     private UUID id;
 
@@ -21,9 +21,6 @@ public class Category {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private Type type;
-
-    @Column(nullable = false)
-    private Instant createdAt = Instant.now();
 
     public enum Type { EXPENSE, INCOME }
 }

@@ -9,7 +9,7 @@ import java.util.UUID;
 @Entity
 @Table(name = "transactions")
 @Getter @Setter @NoArgsConstructor @AllArgsConstructor @Builder
-public class Transaction {
+public class Transaction extends AuditEntity{
     @Id @GeneratedValue
     private UUID id;
 
@@ -29,7 +29,4 @@ public class Transaction {
     private LocalDate occurredAt;
 
     private String description;
-
-    @Column(nullable = false)
-    private Instant createdAt = Instant.now();
 }

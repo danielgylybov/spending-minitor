@@ -14,13 +14,10 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Household {
+public class Household extends AuditEntity {
     @Id @GeneratedValue
     private UUID id;
 
     @Column(nullable = false)
     private String name;
-
-    @Column(nullable = false)
-    private Instant createdAt = Instant.now();
 }

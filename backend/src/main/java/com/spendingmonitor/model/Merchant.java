@@ -8,7 +8,7 @@ import java.util.UUID;
 @Entity
 @Table(name = "merchants")
 @Getter @Setter @NoArgsConstructor @AllArgsConstructor @Builder
-public class Merchant {
+public class Merchant extends AuditEntity {
     @Id @GeneratedValue
     private UUID id;
 
@@ -17,7 +17,4 @@ public class Merchant {
 
     @Column(name = "display_name", nullable = false)
     private String displayName;
-
-    @Column(nullable = false)
-    private Instant createdAt = Instant.now();
 }
